@@ -17,6 +17,7 @@ export const exifRead = () => {
         GPSLongitudeRef: exif.GPSLongitudeRef
       });
       console.log(obj);
+      window.URL.createObjectURL(img[0]);
     })
     .catch(console.error);
 };
