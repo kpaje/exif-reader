@@ -1,23 +1,9 @@
 import * as exifr from "exifr";
-import * as fs from "fs";
+import img from "./test.jpg";
 
-// export const exifRead = function() {
-//   exifr
-//     .parse("./test.jpg")
-//     .then(exif => console.log("Camera:", exif.Make, exif.Model))
-//     .catch(console.error);
-// };
-
-// export default exifRead;
-// module.exports = exifRead;
-
-// const exifr = require("exifr");
-// const fs = require("fs");
-
-export function exifRead() {
-  fs.readFileSync("../public/img/test.jpg")
-    // fs.readFileSync("test.jpg")
-    .then(exifr.parse)
+export const exifRead = () => {
+  exifr
+    .parse(img)
     .then(exif => {
       let obj = Object.assign({
         Make: exif.Make,
@@ -33,7 +19,4 @@ export function exifRead() {
       console.log(obj);
     })
     .catch(console.error);
-}
-// exifRead();
-
-// module.exports.exifRead = exifRead;
+};
