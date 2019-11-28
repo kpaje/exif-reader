@@ -1,11 +1,10 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import * as exifr from "exifr";
 import MapContainer from "./components/googleMap";
 
 function App() {
-  const ref = useRef(null);
-  const [thumbnail, setThumbnail] = useState({ imgThumbnail: "" });
+  const [thumbnail, setThumbnail] = useState();
   const [exifData, setExifData] = useState();
   const [lat, setLat] = useState("");
   const [lng, setLng] = useState("");
@@ -13,7 +12,7 @@ function App() {
   const exifRead = e => {
     const files = e.target.files[0];
     const thumbnailUrl = window.URL.createObjectURL(files);
-    setThumbnail({ imgThumbnail: thumbnailUrl });
+    setThumbnail(thumbnailUrl);
 
     exifr
       .parse(files)
@@ -33,7 +32,7 @@ function App() {
         setLat(exif.latitude);
         setLng(exif.longitude);
 
-        let res = Object.entries(obj).map(([key, value]) => {
+        let renderObj = Object.entries(obj).map(([key, value]) => {
           return (
             <tr key={key}>
               <td style={styles.table}>{key}</td>
@@ -42,7 +41,7 @@ function App() {
           );
         });
 
-        setExifData(res);
+        setExifData(renderObj);
       })
       .catch(console.error);
   };
@@ -50,18 +49,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img
-          src={thumbnail.imgThumbnail}
-          className="App-logo"
-          alt={thumbnail.imgThumbnail}
-        />
+        <img src={thumbnail} className="App-logo" alt={thumbnail} />
 
-        <input
-          id="filepicker"
-          ref={ref}
-          onChange={exifRead}
-          type="file"
-        ></input>
+        <input id="filepicker" onChange={exifRead} type="file"></input>
 
         <table style={styles.table}>
           <tbody>{exifData}</tbody>
