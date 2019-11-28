@@ -1,17 +1,16 @@
 import React, { useRef, useState } from "react";
-// import logo from "./logo.svg";
 import "./App.css";
 import * as exifr from "exifr";
-// import img from "./api/test.jpg";
 
 function App() {
   const ref = useRef(null);
-  const [state, setState] = useState({ imgThumbnail: "" });
+  const [thumbnail, setThumbnail] = useState({ imgThumbnail: "" });
+  const [exifData, setExifData] = useState();
 
   const exifRead = e => {
     const files = e.target.files[0];
     const thumbnailUrl = window.URL.createObjectURL(files);
-    setState({ imgThumbnail: thumbnailUrl });
+    setThumbnail({ imgThumbnail: thumbnailUrl });
 
     exifr
       .parse(files)
@@ -27,7 +26,17 @@ function App() {
           Longtitude: exif.longitude,
           GPSLongitudeRef: exif.GPSLongitudeRef
         });
-        console.log(obj);
+
+        let res = Object.entries(obj).map(([key, value]) => {
+          return (
+            <tr key={key}>
+              <td style={styles.table}>{key}</td>
+              <td style={styles.table}>{value.toString()}</td>
+            </tr>
+          );
+        });
+
+        setExifData(res);
       })
       .catch(console.error);
   };
@@ -36,9 +45,9 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img
-          src={state.imgThumbnail}
+          src={thumbnail.imgThumbnail}
           className="App-logo"
-          alt={state.imgThumbnail}
+          alt={thumbnail.imgThumbnail}
         />
 
         <input
@@ -47,10 +56,21 @@ function App() {
           onChange={exifRead}
           type="file"
         ></input>
-        {/* <button onClick={exifRead}> TEST </button> */}
+
+        <table style={styles.table}>
+          <tbody>{exifData}</tbody>
+        </table>
       </header>
     </div>
   );
 }
+
+const styles = {
+  table: {
+    textAlign: "left",
+    border: "1px solid",
+    borderCollapse: "collapse"
+  }
+};
 
 export default App;
