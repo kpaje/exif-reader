@@ -1,11 +1,14 @@
 import React, { useRef, useState } from "react";
 import "./App.css";
 import * as exifr from "exifr";
+import MapContainer from "./components/googleMap";
 
 function App() {
   const ref = useRef(null);
   const [thumbnail, setThumbnail] = useState({ imgThumbnail: "" });
   const [exifData, setExifData] = useState();
+  const [lat, setLat] = useState("");
+  const [lng, setLng] = useState("");
 
   const exifRead = e => {
     const files = e.target.files[0];
@@ -26,6 +29,9 @@ function App() {
           Longtitude: exif.longitude,
           GPSLongitudeRef: exif.GPSLongitudeRef
         });
+
+        setLat(exif.latitude);
+        setLng(exif.longitude);
 
         let res = Object.entries(obj).map(([key, value]) => {
           return (
@@ -61,6 +67,7 @@ function App() {
           <tbody>{exifData}</tbody>
         </table>
       </header>
+      <MapContainer lat={lat} lng={lng} />
     </div>
   );
 }
