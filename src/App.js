@@ -1,17 +1,18 @@
-import React, { useRef } from "react";
-import logo from "./logo.svg";
+import React, { useRef, useState } from "react";
+// import logo from "./logo.svg";
 import "./App.css";
-// import { exifRead } from "./api/exif-js";
 import * as exifr from "exifr";
 // import img from "./api/test.jpg";
 
 function App() {
   const ref = useRef(null);
+  const [state, setState] = useState({ imgThumbnail: "" });
 
   const exifRead = e => {
     const files = e.target.files[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(files);
+    const thumbnailUrl = window.URL.createObjectURL(files);
+    setState({ imgThumbnail: thumbnailUrl });
+
     exifr
       .parse(files)
       .then(exif => {
@@ -34,7 +35,11 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img
+          src={state.imgThumbnail}
+          className="App-logo"
+          alt={state.imgThumbnail}
+        />
 
         <input
           id="filepicker"
@@ -42,7 +47,7 @@ function App() {
           onChange={exifRead}
           type="file"
         ></input>
-        <button onClick={exifRead}> TEST </button>
+        {/* <button onClick={exifRead}> TEST </button> */}
       </header>
     </div>
   );
