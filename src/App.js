@@ -1,23 +1,28 @@
 import React, { useState } from "react";
 import "./App.css";
 import * as exifr from "exifr";
-import MapContainer from "./components/googleMap";
+import MapContainer from "./api/googleMap";
 
 function App() {
   const [thumbnail, setThumbnail] = useState();
   const [exifData, setExifData] = useState();
   const [lat, setLat] = useState("");
   const [lng, setLng] = useState("");
+  let obj;
 
-  const exifRead = e => {
-    const files = e.target.files[0];
-    const thumbnailUrl = window.URL.createObjectURL(files);
+  const createThumbnail = e => {
+    const thumbnailUrl = window.URL.createObjectURL(e);
     setThumbnail(thumbnailUrl);
+  };
+
+  const generateExif = e => {
+    const files = e.target.files[0];
+    createThumbnail(files);
 
     exifr
       .parse(files)
       .then(exif => {
-        let obj = Object.assign({
+        obj = Object.assign({
           Make: exif.Make,
           Model: exif.Model,
           Software: exif.Software,
@@ -28,35 +33,47 @@ function App() {
           Longtitude: exif.longitude,
           GPSLongitudeRef: exif.GPSLongitudeRef
         });
-
-        setLat(exif.latitude);
-        setLng(exif.longitude);
-
-        let renderObj = Object.entries(obj).map(([key, value]) => {
-          return (
-            <tr key={key}>
-              <td style={styles.table}>{key}</td>
-              <td style={styles.table}>{value.toString()}</td>
-            </tr>
-          );
-        });
-
-        setExifData(renderObj);
+        setExifData(obj);
       })
       .catch(console.error);
   };
 
+  const setGPSCoordinates = () => {
+    setLat(obj.latitude);
+    setLng(obj.longitude);
+  };
+
+  const renderObj = () => {
+    Object.entries(obj).map(([key, value]) => {
+      return (
+        <tr key={key}>
+          <td style={styles.table}>{key}</td>
+          <td style={styles.table}>{value.toString()}</td>
+        </tr>
+      );
+    });
+  };
+
+  const renderExif = e => {
+    generateExif(e);
+    console.log(exifData);
+
+    // generateExif(e);
+    // setGPSCoordinates();
+    // setExifData(renderObj());
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
+    <div>
+      <div className="App-header">
         <img src={thumbnail} className="App-logo" alt={thumbnail} />
 
-        <input id="filepicker" onChange={exifRead} type="file"></input>
+        <input id="filepicker" onChange={renderExif} type="file"></input>
 
         <table style={styles.table}>
-          <tbody>{exifData}</tbody>
+          <tbody>{renderObj}</tbody>
         </table>
-      </header>
+      </div>
       <MapContainer lat={lat} lng={lng} />
     </div>
   );
