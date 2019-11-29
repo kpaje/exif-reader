@@ -1,11 +1,11 @@
 import React from "react";
 import "./App.css";
-import Exif from "./api/exif-js";
+import HomePage from "./pages/HomePage";
 
 function App() {
   return (
     <div>
-      <Exif />
+      <HomePage />
     </div>
   );
 }
