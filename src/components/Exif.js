@@ -24,16 +24,16 @@ function Exif() {
     setThumbnail(thumbnail);
   };
 
-  const setGPSCoordinates = obj => {
-    setLat(obj.latitude);
-    setLng(obj.longitude);
+  const setGPSCoordinates = exif => {
+    setLat(exif.latitude);
+    setLng(exif.longitude);
   };
 
   const processExif = (exif, image) => {
     let exifData = formatObj(exif, objProps);
+    setGPSCoordinates(exifData);
     handleTable(exifData);
     handleThumbnail(image);
-    setGPSCoordinates(exifData);
   };
 
   const generateExif = event => {
