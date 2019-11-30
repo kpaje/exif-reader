@@ -1,4 +1,5 @@
 import React from "react";
+import * as exifr from "exifr";
 
 export const objProps = [
   "Make",
@@ -12,27 +13,33 @@ export const objProps = [
   "GPSLongitudeRef"
 ];
 
-export const createTable = event => {
-  let res = Object.entries(event).map(([key, value]) => {
+export const createTable = exifData => {
+  let result = Object.entries(exifData).map(([key, value]) => {
     return (
       <tr key={key}>
         <td style={styles.table}>{key}</td>
         <td style={styles.table}>{value.toString()}</td>
+        {/* requires .toString() because value contains nested object */}
       </tr>
     );
   });
-  return res;
+  return result;
 };
 
-export const createThumbnail = event => {
-  const thumbnailUrl = window.URL.createObjectURL(event);
+export const createThumbnail = exifData => {
+  const thumbnailUrl = window.URL.createObjectURL(exifData);
   return thumbnailUrl;
 };
 
-// export const setGPSCoordinates = obj => {
-//   setLat(obj.latitude);
-//   setLng(obj.longitude);
-// };
+export const parseData = (event, cb) => {
+  const image = event.target.files[0];
+  exifr
+    .parse(image)
+    .then(exif => {
+      cb(exif, image);
+    })
+    .catch(console.error);
+};
 
 const styles = {
   table: {

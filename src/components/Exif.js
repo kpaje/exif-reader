@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import "../App.css";
 import * as exifr from "exifr";
-import MapContainer from "../api/googleMap";
 import { formatObj } from "../utils/helpers";
 import { objProps, createTable, createThumbnail } from "../api/exif-js";
+import Thumbnail from "./Thumbnail";
+import Filepicker from "./Filepicker";
+import Table from "./Table";
+import GoogleMap from "../api/googleMap";
 
 function Exif() {
   const [thumbnail, setThumbnail] = useState();
@@ -11,17 +14,26 @@ function Exif() {
   const [lat, setLat] = useState("");
   const [lng, setLng] = useState("");
 
-  const processExif = (exif, image) => {
-    let exifData = formatObj(exif, objProps);
-
+  const handleTable = exifData => {
     let table = createTable(exifData);
     setTableData(table);
+  };
 
+  const handleThumbnail = image => {
     let thumbnail = createThumbnail(image);
     setThumbnail(thumbnail);
+  };
 
-    setLat(exifData.latitude);
-    setLng(exifData.longitude);
+  const setGPSCoordinates = obj => {
+    setLat(obj.latitude);
+    setLng(obj.longitude);
+  };
+
+  const processExif = (exif, image) => {
+    let exifData = formatObj(exif, objProps);
+    handleTable(exifData);
+    handleThumbnail(image);
+    setGPSCoordinates(exifData);
   };
 
   const generateExif = event => {
@@ -37,25 +49,13 @@ function Exif() {
   return (
     <div>
       <header className="App-header">
-        <img src={thumbnail} className="App-logo" alt={thumbnail} />
-
-        <input id="filepicker" onChange={generateExif} type="file"></input>
-
-        <table style={styles.table}>
-          <tbody>{tableData}</tbody>
-        </table>
+        <Thumbnail src={thumbnail} alt={thumbnail} />
+        <Filepicker onChange={generateExif} />
+        <Table tableData={tableData} />
       </header>
-      <MapContainer lat={lat} lng={lng} />
+      <GoogleMap lat={lat} lng={lng} />
     </div>
   );
 }
 
 export default Exif;
-
-const styles = {
-  table: {
-    textAlign: "left",
-    border: "1px solid",
-    borderCollapse: "collapse"
-  }
-};
