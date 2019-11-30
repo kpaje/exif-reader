@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../App.css";
 import * as exifr from "exifr";
 import { formatObj } from "../utils/helpers";
-import { objProps, createTable, createThumbnail } from "../api/exif-js";
+import { definedProps, formatTable, detectThumbnail } from "../api/exif-js";
 import Thumbnail from "./Thumbnail";
 import Filepicker from "./Filepicker";
 import Table from "./Table";
@@ -14,26 +14,26 @@ function Exif() {
   const [lat, setLat] = useState("");
   const [lng, setLng] = useState("");
 
-  const handleTable = exifData => {
-    let table = createTable(exifData);
-    setTableData(table);
-  };
-
-  const handleThumbnail = image => {
-    let thumbnail = createThumbnail(image);
-    setThumbnail(thumbnail);
-  };
-
-  const setGPSCoordinates = exif => {
-    setLat(exif.latitude);
-    setLng(exif.longitude);
+  const handlers = {
+    getTableData: function(exifData) {
+      let table = formatTable(exifData);
+      setTableData(table);
+    },
+    getThumbnail: function(image) {
+      let thumbnail = detectThumbnail(image);
+      setThumbnail(thumbnail);
+    },
+    getGPSCoordinates: function(exif) {
+      setLat(exif.latitude);
+      setLng(exif.longitude);
+    }
   };
 
   const processExif = (exif, image) => {
-    let exifData = formatObj(exif, objProps);
-    setGPSCoordinates(exifData);
-    handleTable(exifData);
-    handleThumbnail(image);
+    let exifData = formatObj(exif, definedProps);
+    handlers.getGPSCoordinates(exifData);
+    handlers.getTableData(exifData);
+    handlers.getThumbnail(image);
   };
 
   const generateExif = event => {

@@ -1,7 +1,7 @@
 import React from "react";
 import * as exifr from "exifr";
 
-export const objProps = [
+export const definedProps = [
   "Make",
   "Model",
   "Software",
@@ -13,7 +13,7 @@ export const objProps = [
   "GPSLongitudeRef"
 ];
 
-export const createTable = exifData => {
+export const formatTable = exifData => {
   let result = Object.entries(exifData).map(([key, value]) => {
     return (
       <tr key={key}>
@@ -26,7 +26,7 @@ export const createTable = exifData => {
   return result;
 };
 
-export const createThumbnail = exifData => {
+export const detectThumbnail = exifData => {
   const thumbnailUrl = window.URL.createObjectURL(exifData);
   return thumbnailUrl;
 };
