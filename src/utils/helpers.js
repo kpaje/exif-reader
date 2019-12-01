@@ -30,3 +30,14 @@ export const cleanData = f => {
 
   return f;
 };
+
+export function setObjKeyValues({ key, value }) {
+  return { [key]: value };
+}
+
+export function setObjSpread(acc, curr) {
+  return {
+    ...acc,
+    ...curr
+  };
+}

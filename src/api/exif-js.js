@@ -1,5 +1,5 @@
 import React from "react";
-import * as exifr from "exifr";
+// import * as exifr from "exifr";
 
 export const definedProps = [
   "Make",
@@ -31,15 +31,15 @@ export const detectThumbnail = exifData => {
   return thumbnailUrl;
 };
 
-export const parseData = (event, cb) => {
-  const image = event.target.files[0];
-  exifr
-    .parse(image)
-    .then(exif => {
-      cb(exif, image);
-    })
-    .catch(console.error);
-};
+// export const parseData = (event, cb) => {
+//   const image = event.target.files[0];
+//   exifr
+//     .parse(image)
+//     .then(exif => {
+//       cb(exif, image);
+//     })
+//     .catch(console.error);
+// };
 
 const styles = {
   table: {

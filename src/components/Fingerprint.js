@@ -1,36 +1,30 @@
 import React, { useState, useEffect } from "react";
 import DataTable from "../components/DataTable"; // Custom component to render our data
-import { cleanData } from "../utils/helpers";
-import { getFingerprint } from "../api/fingerprintjs2";
+import {
+  getIpAndFingerprintData,
+  formatFingerprint,
+  cleanUpData
+} from "../api/fingerprintjs2";
 
 function Fingerprint() {
   const [fingerprint, setFingerprint] = useState(null);
   const [ipData, setIpData] = useState(null);
   const [showReport, setShowReport] = useState(true);
 
+  const generateData = ([ipAddress, clientFingerprint]) => {
+    let fingerprint = formatFingerprint(clientFingerprint);
+    cleanUpData(ipAddress, fingerprint);
+    setIpData(ipAddress);
+    setFingerprint(fingerprint);
+    setShowReport(false);
+  };
+
   useEffect(() => {
     if (showReport) {
-      fetch("https://extreme-ip-lookup.com/json")
-        .then(res => res.json())
-        .then(ipAddress => Promise.all([ipAddress, getFingerprint()]))
-        .then(([ipAddress, deviceFingerprint]) => {
-          console.log(deviceFingerprint);
-          let fingerprint = deviceFingerprint
-            .map(({ key, value }) => ({ [key]: value }))
-            .reduce((acc, curr) => ({
-              ...acc,
-              ...curr
-            }));
-
-          fingerprint = cleanData(fingerprint);
-          ipAddress = cleanData(ipAddress);
-
-          setFingerprint(fingerprint);
-          setIpData(ipAddress);
-          setShowReport(false);
-        });
+      getIpAndFingerprintData().then(generateData);
     }
   }, [showReport]);
+
   return (
     <div>
       {ipData && fingerprint ? (
