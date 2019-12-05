@@ -1,7 +1,7 @@
 import React from "react";
 import { startCase } from "lodash";
 
-const DataTable = ({ title, data }) => (
+const FingerPrintTable = ({ title, data }) => (
 	<section>
 		<table>
 			<thead>
@@ -21,4 +21,4 @@ const DataTable = ({ title, data }) => (
 	</section>
 );
 
-export default DataTable;
+export default FingerPrintTable;

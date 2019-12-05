@@ -1,19 +1,18 @@
 import React from "react";
 
 function Table({ tableData }) {
-	function formatTable(tableData) {
-		let result = Object.entries(tableData).map(([key, value]) => (
-			<tr key={key}>
-				<td style={styles.table}>{key}</td>
-				<td style={styles.table}>{value.toString()}</td>
-			</tr>
-		));
-		return result;
-	}
-
 	return (
 		<table style={styles.table}>
-			{!undefined || !null ? <tbody>{formatTable(tableData)}</tbody> : null}
+			{!undefined || !null ? (
+				<tbody>
+					{Object.entries(tableData).map(([key, value]) => (
+						<tr key={key}>
+							<td style={styles.table}>{key}</td>
+							<td style={styles.table}>{value.toString()}</td>
+						</tr>
+					))}
+				</tbody>
+			) : null}
 		</table>
 	);
 }
