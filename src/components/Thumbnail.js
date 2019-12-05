@@ -1,15 +1,16 @@
-import React, { setState } from "react";
-import "../App.css";
+import React from "react";
 
-function Thumbnail(props) {
-	const [state, setState] = setState();
-	const detectThumbnail = exifData => {
-		const thumbnailUrl = window.URL.createObjectURL(exifData);
-		setState(thumbnailUrl);
-	};
+function Thumbnail(thumbnail) {
+	let imgURL = null;
+	//create blob from image to link url for thumbnail
+	if (thumbnail.src) {
+		imgURL = URL.createObjectURL(thumbnail.src);
+	}
 	return (
 		<div>
-			<img src={state.src} className="App-logo" alt={state.alt} />
+			{imgURL !== null ? (
+				<img src={imgURL} alt={thumbnail.alt} className="App-logo" />
+			) : null}
 		</div>
 	);
 }
