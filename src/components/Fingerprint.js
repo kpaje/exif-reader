@@ -21,7 +21,9 @@ function Fingerprint() {
 
 	useEffect(() => {
 		if (showReport) {
-			getIpAndFingerprintData().then(generateData);
+			getIpAndFingerprintData()
+				.then(generateData)
+				.catch(console.error);
 		}
 	}, [showReport]);
 
