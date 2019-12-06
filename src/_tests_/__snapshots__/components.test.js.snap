@@ -31,4 +31,23 @@ exports[`Component Rendering Exif Component 1`] = `
 </div>
 `;
 
+exports[`Component Rendering Filepicker Component 1`] = `
+<div>
+  <input
+    id="filepicker"
+    type="file"
+  />
+</div>
+`;
+
+exports[`Component Rendering Fingerprint Component 1`] = `
+<div>
+  <div>
+    <h2>
+      Please wait...
+    </h2>
+  </div>
+</div>
+`;
+
 exports[`Component Rendering Thumbnail Component 1`] = `<div />`;
