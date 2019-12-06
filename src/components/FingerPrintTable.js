@@ -1,7 +1,7 @@
 import React from "react";
 import { startCase } from "lodash";
 
-const FingerPrintTable = ({ title, data }) => (
+const FingerprintTable = ({ title, data }) => (
 	<section>
 		<table>
 			<thead>
@@ -21,4 +21,4 @@ const FingerPrintTable = ({ title, data }) => (
 	</section>
 );
 
-export default FingerPrintTable;
+export default FingerprintTable;

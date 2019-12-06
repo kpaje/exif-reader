@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Rendering Exif Component 1`] = `
+<div>
+  <header
+    className="App-header"
+  >
+    <div />
+    <div>
+      <input
+        id="filepicker"
+        onChange={[Function]}
+        type="file"
+      />
+    </div>
+    <table
+      style={
+        Object {
+          "border": "1px solid",
+          "borderCollapse": "collapse",
+          "textAlign": "left",
+        }
+      }
+    >
+      <tbody />
+    </table>
+  </header>
+  <div>
+    Loading...
+  </div>
+</div>
+`;
+
+exports[`Component Rendering Thumbnail Component 1`] = `<div />`;

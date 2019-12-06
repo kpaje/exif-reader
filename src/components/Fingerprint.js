@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import FingerPrintTable from "../components/FingerPrintTable"; // Custom component to render our data
+import FingerprintTable from "./FingerprintTable"; // Custom component to render our data
 import {
 	getIpAndFingerprintData,
 	formatFingerprint,
@@ -31,8 +31,8 @@ function Fingerprint() {
 		<div>
 			{ipData && fingerprint ? (
 				<div>
-					<FingerPrintTable title="IP Data" data={ipData} />
-					<FingerPrintTable title="Fingerprint" data={fingerprint} />
+					<FingerprintTable title="IP Data" data={ipData} />
+					<FingerprintTable title="Fingerprint" data={fingerprint} />
 				</div>
 			) : (
 				<div>
