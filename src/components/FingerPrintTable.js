@@ -11,26 +11,27 @@ import Divider from "@material-ui/core/Divider";
 
 // const FingerprintTable = () => {
 const FingerprintTable = ({ title, data }) => {
-  const classes = useStyles();
-  return (
-    <section>
-      {Object.entries(data).map(([key, value], idx) => (
-        <>
-          <List className={classes.root}>
-            <ListItem>
-              <ListItemAvatar>
-                <Avatar>
-                  <ImageIcon />
-                </Avatar>
-              </ListItemAvatar>
-              <ListItemText primary={startCase(key)} secondary={value} />
-            </ListItem>
-          </List>
-          <Divider variant="inset" component="li" />
-        </>
-      ))}
+	const classes = useStyles();
 
-      {/* <table>
+	return (
+		<section>
+			{Object.entries(data).map(([key, value], idx) => (
+				<>
+					<List className={classes.root}>
+						<ListItem>
+							<ListItemAvatar>
+								<Avatar>
+									<ImageIcon />
+								</Avatar>
+							</ListItemAvatar>
+							<ListItemText primary={startCase(key)} secondary={value} />
+						</ListItem>
+					</List>
+					<Divider variant="inset" component="li" />
+				</>
+			))}
+
+			{/* <table>
 			<thead>
 				<tr>
 					<td>{title}</td>
@@ -45,15 +46,16 @@ const FingerprintTable = ({ title, data }) => {
 				))}
 			</tbody>
 		</table> */}
-    </section>
-  );
+		</section>
+	);
 };
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    width: "100%",
-    // maxWidth: 360,
-    backgroundColor: theme.palette.background.paper
-  }
+	root: {
+		width: "100%",
+		height: "auto",
+		// maxWidth: 360,
+		backgroundColor: theme.palette.background.paper
+	}
 }));
 export default FingerprintTable;
