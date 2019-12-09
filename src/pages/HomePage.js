@@ -6,9 +6,9 @@ import Dashboard from "../components/Dashboard";
 function HomePage() {
   return (
     <div>
-      {/* <Fingerprint /> */}
       {/* <Exif /> */}
       <Dashboard />
+      {/* <Fingerprint /> */}
     </div>
   );
 }
