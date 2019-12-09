@@ -1,8 +1,10 @@
-import React from 'react';
-import Link from '@material-ui/core/Link';
-import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import Title from './Title';
+import React from "react";
+import Link from "@material-ui/core/Link";
+import { makeStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
+import Title from "./Title";
+import DropzoneArea from "./Dropzone";
+import Input from "@material-ui/core/Input";
 
 function preventDefault(event) {
   event.preventDefault();
@@ -11,25 +13,28 @@ function preventDefault(event) {
 const useStyles = makeStyles({
   depositContext: {
     flex: 1,
-  },
+    overflow: "hidden"
+  }
 });
 
 export default function Deposits() {
   const classes = useStyles();
   return (
     <React.Fragment>
-      <Title>Recent Deposits</Title>
-      <Typography component="p" variant="h4">
+      {/* <Title>Upload a Photo</Title> */}
+      {/* <Typography component="p" variant="h4">
         $3,024.00
-      </Typography>
-      <Typography color="textSecondary" className={classes.depositContext}>
+      </Typography> */}
+      <DropzoneArea />
+      {/* <Input type={"file"} disableUnderline={true} autoFocus={true}></Input> */}
+      {/* <Typography color="textSecondary" className={classes.depositContext}>
         on 15 March, 2019
-      </Typography>
-      <div>
+      </Typography> */}
+      {/* <div>
         <Link color="primary" href="#" onClick={preventDefault}>
           View balance
         </Link>
-      </div>
+      </div> */}
     </React.Fragment>
   );
 }

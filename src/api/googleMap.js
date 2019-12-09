@@ -9,7 +9,8 @@ export class MapContainer extends Component {
     return (
       <Map
         google={this.props.google}
-        style={{ height: "100vmin", position: "relative" }}
+        style={{ height: "30vmin", width: "60vmin" }}
+        // style={{ height: "20vmin", width: "30vmin", position: "relative" }}
         center={{
           lat: this.props.lat,
           lng: this.props.lng
