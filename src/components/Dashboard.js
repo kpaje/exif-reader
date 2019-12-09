@@ -107,6 +107,7 @@ export default function Dashboard() {
           <Grid container spacing={3}>
             {/* Chart */}
             <Grid item xs={12} md={8} lg={9}>
+              {/* <Paper> */}
               {/* <Paper className={fixedHeightPaper}> */}
               <Chart />
               {/* </Paper> */}
@@ -119,9 +120,10 @@ export default function Dashboard() {
             </Grid>
             {/* Recent Orders */}
             <Grid item xs={12}>
-              <Paper className={classes.paper}>
-                <Fingerprint />
+              {/* <Paper className={classes.paper}> */}
+              <Paper className={fixedHeightPaper}>
                 {/* <Orders /> */}
+                <Fingerprint />
               </Paper>
             </Grid>
           </Grid>
