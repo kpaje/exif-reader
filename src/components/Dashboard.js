@@ -47,6 +47,7 @@ export default function Dashboard() {
     setOpen(false);
   };
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+  const fixedWidthPaper = clsx(classes.paper, classes.fixedWidth);
 
   return (
     <div className={classes.root}>
@@ -109,6 +110,7 @@ export default function Dashboard() {
             <Grid item xs={12} md={8} lg={9}>
               {/* <Paper> */}
               {/* <Paper className={fixedHeightPaper}> */}
+              {/* <Paper className={fixedWidthPaper}> */}
               <Chart />
               {/* </Paper> */}
             </Grid>
@@ -214,5 +216,8 @@ const useStyles = makeStyles(theme => ({
   },
   fixedHeight: {
     height: 240
+  },
+  fixedWidth: {
+    width: "auto"
   }
 }));

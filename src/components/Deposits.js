@@ -25,7 +25,7 @@ export default function Deposits() {
       {/* <Typography component="p" variant="h4">
         $3,024.00
       </Typography> */}
-      <DropzoneArea />
+      <DropzoneArea className={classes.depositContext} />
       {/* <Input type={"file"} disableUnderline={true} autoFocus={true}></Input> */}
       {/* <Typography color="textSecondary" className={classes.depositContext}>
         on 15 March, 2019
