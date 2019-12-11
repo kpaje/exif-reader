@@ -47,7 +47,7 @@ export default function Dashboard() {
 		setOpen(false);
 	};
 	const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
-	const fixedWidthPaper = clsx(classes.paper, classes.fixedWidth);
+	const fingerprintHeight = clsx(classes.paper, classes.fingerprintHeight);
 
 	return (
 		<div className={classes.root}>
@@ -123,7 +123,7 @@ export default function Dashboard() {
 						{/* Recent Orders */}
 						<Grid item xs={12}>
 							{/* <Paper className={classes.paper}> */}
-							<Paper className={fixedHeightPaper}>
+							<Paper className={fingerprintHeight}>
 								{/* <Orders /> */}
 								<Fingerprint />
 							</Paper>
@@ -217,7 +217,7 @@ const useStyles = makeStyles(theme => ({
 	fixedHeight: {
 		height: 240
 	},
-	fixedWidth: {
-		width: "auto"
+	fingerprintHeight: {
+		height: 480
 	}
 }));
