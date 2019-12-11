@@ -20,7 +20,7 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import { mainListItems, secondaryListItems } from "./listItems";
 import Chart from "./Chart";
-import Deposits from "./Deposits";
+import Dropzone from "./Dropzone";
 import Orders from "./Orders";
 import Fingerprint from "./Fingerprint";
 
@@ -117,7 +117,7 @@ export default function Dashboard() {
 						{/* Recent Deposits */}
 						<Grid item xs={12} md={4} lg={3}>
 							<Paper className={fixedHeightPaper}>
-								<Deposits />
+								<Dropzone />
 							</Paper>
 						</Grid>
 						{/* Recent Orders */}
