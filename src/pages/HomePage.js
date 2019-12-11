@@ -4,13 +4,13 @@ import Fingerprint from "../components/Fingerprint";
 import Dashboard from "../components/Dashboard";
 
 function HomePage() {
-  return (
-    <div>
-      {/* <Exif /> */}
-      <Dashboard />
-      {/* <Fingerprint /> */}
-    </div>
-  );
+	return (
+		<div>
+			{/* <Exif /> */}
+			<Dashboard />
+			{/* <Fingerprint /> */}
+		</div>
+	);
 }
 
 export default HomePage;
