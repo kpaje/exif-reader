@@ -23,19 +23,8 @@ import Chart from "./Chart";
 import Dropzone from "./Dropzone";
 import Orders from "./Orders";
 import Fingerprint from "./Fingerprint";
-
-function Copyright() {
-	return (
-		<Typography variant="body2" color="textSecondary" align="center">
-			{"Copyright © "}
-			<Link color="inherit" href="https://material-ui.com/">
-				Your Website
-			</Link>{" "}
-			{new Date().getFullYear()}
-			{"."}
-		</Typography>
-	);
-}
+import Copyright from "./Copyright";
+import Papers from "./Papers";
 
 export default function Dashboard() {
 	const classes = useStyles();
@@ -46,8 +35,8 @@ export default function Dashboard() {
 	const handleDrawerClose = () => {
 		setOpen(false);
 	};
-	const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
-	const fingerprintHeight = clsx(classes.paper, classes.fingerprintHeight);
+	// const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+	// const fingerprintHeight = clsx(classes.paper, classes.fingerprintHeight);
 
 	return (
 		<div className={classes.root}>
@@ -102,38 +91,7 @@ export default function Dashboard() {
 				<Divider />
 				<List>{secondaryListItems}</List>
 			</Drawer>
-			<main className={classes.content}>
-				<div className={classes.appBarSpacer} />
-				<Container maxWidth="lg" className={classes.container}>
-					<Grid container spacing={3}>
-						{/* Chart */}
-						<Grid item xs={12} md={8} lg={9}>
-							{/* <Paper> */}
-							<Paper className={fixedHeightPaper}>
-								{/* <Paper className={fixedWidthPaper}> */}
-								{/* <Chart /> */}
-							</Paper>
-						</Grid>
-						{/* Recent Deposits */}
-						<Grid item xs={12} md={4} lg={3}>
-							<Paper className={fixedHeightPaper}>
-								<Dropzone />
-							</Paper>
-						</Grid>
-						{/* Recent Orders */}
-						<Grid item xs={12}>
-							{/* <Paper className={classes.paper}> */}
-							<Paper className={fingerprintHeight}>
-								{/* <Orders /> */}
-								<Fingerprint />
-							</Paper>
-						</Grid>
-					</Grid>
-					<Box pt={4}>
-						<Copyright />
-					</Box>
-				</Container>
-			</main>
+			<Papers />
 		</div>
 	);
 }
