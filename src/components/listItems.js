@@ -12,31 +12,31 @@ import LayersIcon from "@material-ui/icons/Layers";
 import AssignmentIcon from "@material-ui/icons/Assignment";
 
 export const mainListItems = (
-	<div>
-		<Link to="/">
-			<ListItem button>
-				<ListItemIcon>
-					<DashboardIcon />
-				</ListItemIcon>
-				<ListItemText primary="Dashboard" />
-			</ListItem>
-		</Link>
-		<Link to="/fingerprint">
-			<ListItem button>
-				<ListItemIcon>
-					<ShoppingCartIcon />
-				</ListItemIcon>
-				<ListItemText primary="Fingerprint" />
-			</ListItem>
-		</Link>
+  <div>
+    <Link to="/">
+      <ListItem button>
+        <ListItemIcon>
+          <DashboardIcon />
+        </ListItemIcon>
+        <ListItemText primary="Dashboard" />
+      </ListItem>
+    </Link>
+    <Link to="/exif">
+      <ListItem button>
+        <ListItemIcon>
+          <ShoppingCartIcon />
+        </ListItemIcon>
+        <ListItemText primary="Exif" />
+      </ListItem>
+    </Link>
 
-		<ListItem button>
-			<ListItemIcon>
-				<PeopleIcon />
-			</ListItemIcon>
-			<ListItemText primary="Exif" />
-		</ListItem>
-		{/* <ListItem button>
+    <ListItem button>
+      <ListItemIcon>
+        <PeopleIcon />
+      </ListItemIcon>
+      <ListItemText primary="Extra" />
+    </ListItem>
+    {/* <ListItem button>
       <ListItemIcon>
         <BarChartIcon />
       </ListItemIcon>
@@ -48,12 +48,12 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Integrations" />
     </ListItem> */}
-	</div>
+  </div>
 );
 
 export const secondaryListItems = (
-	<div>
-		{/* <ListSubheader inset>Saved reports</ListSubheader>
+  <div>
+    {/* <ListSubheader inset>Saved reports</ListSubheader>
 		<ListItem button>
 			<ListItemIcon>
 				<AssignmentIcon />
@@ -72,5 +72,5 @@ export const secondaryListItems = (
 			</ListItemIcon>
 			<ListItemText primary="Year-end sale" />
 		</ListItem> */}
-	</div>
+  </div>
 );

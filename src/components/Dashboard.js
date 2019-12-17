@@ -26,6 +26,8 @@ import Fingerprint from "./Fingerprint";
 import Copyright from "./Copyright";
 import Papers from "./Papers";
 import Title from "./Title";
+import Header from "./Header";
+import ExifPage from "../pages/ExifPage";
 
 export default function Dashboard() {
   const classes = useStyles();
@@ -61,10 +63,12 @@ export default function Dashboard() {
           </IconButton>
           <Title />
           {/* <IconButton color="inherit">
-						<Badge badgeContent={4} color="secondary">
-							<NotificationsIcon />
-						</Badge>
-					</IconButton> */}
+			<Badge badgeContent={4} color="secondary">
+			
+			  <NotificationsIcon />
+			  
+            </Badge>
+          </IconButton> */}
         </Toolbar>
       </AppBar>
       <Drawer
@@ -85,6 +89,7 @@ export default function Dashboard() {
         <List>{secondaryListItems}</List>
       </Drawer>
       <Papers />
+      {/* <ExifPage /> */}
     </div>
   );
 }
