@@ -5,6 +5,7 @@ import Dashboard from "../components/Dashboard";
 import Papers from "../components/Papers";
 import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
+import CssBaseline from "@material-ui/core/CssBaseline";
 
 function HomePage() {
   const classes = useStyles();
@@ -15,6 +16,7 @@ function HomePage() {
     //   {/* <Dashboard /> */}
     //   {/* <Fingerprint /> */}
     <div className={classes.root}>
+      <CssBaseline />
       {/* <main className={classes.content}> */}
       <div className={classes.appBarSpacer} />
       <Container maxWidth="lg" className={classes.container}>

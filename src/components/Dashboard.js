@@ -41,7 +41,7 @@ export default function Dashboard() {
   return (
     <div>
       {/* <div className={classes.root}> */}
-      <CssBaseline />
+      {/* <CssBaseline /> */}
       <AppBar
         position="absolute"
         className={clsx(classes.appBar, open && classes.appBarShift)}
