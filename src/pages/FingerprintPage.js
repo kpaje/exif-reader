@@ -5,14 +5,13 @@ import Dashboard from "../components/Dashboard";
 import Dropzone from "../components/Dropzone";
 import GoogleMap from "../api/googleMap";
 
-function ExifPage() {
-  return (
-    // <div className="exif">
-    <div>
-      <GoogleMap />
-      <Dropzone />
-    </div>
-  );
+function FingerprintPage() {
+	return (
+		<div className="fingerprint">
+			<GoogleMap />
+			<Dropzone />
+		</div>
+	);
 }
 
-export default ExifPage;
+export default FingerprintPage;
