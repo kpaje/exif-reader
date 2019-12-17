@@ -25,6 +25,7 @@ import Orders from "./Orders";
 import Fingerprint from "./Fingerprint";
 import Copyright from "./Copyright";
 import Papers from "./Papers";
+import Title from "./Title";
 
 export default function Dashboard() {
   const classes = useStyles();
@@ -58,15 +59,7 @@ export default function Dashboard() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography
-            component="h1"
-            variant="h6"
-            color="inherit"
-            noWrap
-            className={classes.title}
-          >
-            Dashboard
-          </Typography>
+          <Title />
           {/* <IconButton color="inherit">
 						<Badge badgeContent={4} color="secondary">
 							<NotificationsIcon />
