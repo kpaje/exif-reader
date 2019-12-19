@@ -11,12 +11,14 @@ function App() {
 	const classes = useStyles();
 
 	return (
-		<div className={classes.root}>
-			<Dashboard />
-			<Switch>
-				<Route exact path="/" component={Papers} />
-				<Route path="/exif" component={ExifPage} />
-			</Switch>
+		<div>
+			<div className={classes.root}>
+				<Dashboard />
+				<Switch>
+					<Route exact path="/" component={Papers} />
+					<Route path="/exif" component={ExifPage} />
+				</Switch>
+			</div>
 			<Copyright />
 		</div>
 	);
