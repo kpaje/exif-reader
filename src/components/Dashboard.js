@@ -7,14 +7,11 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
-import Container from "@material-ui/core/Container";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import { mainListItems, secondaryListItems } from "./listItems";
-import Papers from "./Papers";
 import Title from "./Title";
-import ExifPage from "../pages/ExifPage";
 
 export default function Dashboard() {
 	const classes = useStyles();
@@ -29,7 +26,7 @@ export default function Dashboard() {
 	// const fingerprintHeight = clsx(classes.paper, classes.fingerprintHeight);
 
 	return (
-		<div className={classes.root}>
+		<React.Fragment>
 			<CssBaseline />
 			<AppBar
 				position="absolute"
@@ -68,9 +65,7 @@ export default function Dashboard() {
 				<Divider />
 				<List>{secondaryListItems}</List>
 			</Drawer>
-			<Papers />
-			{/* <ExifPage /> */}
-		</div>
+		</React.Fragment>
 	);
 }
 
