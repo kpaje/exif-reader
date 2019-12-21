@@ -67,6 +67,7 @@ const useStyles = makeStyles(theme => ({
     height: 240
   },
   fingerprintHeight: {
-    height: 480
+    height: 480,
+    overflow: "auto"
   }
 }));
