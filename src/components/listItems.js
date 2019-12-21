@@ -1,4 +1,5 @@
 import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
@@ -11,9 +12,14 @@ import BarChartIcon from "@material-ui/icons/BarChart";
 import LayersIcon from "@material-ui/icons/Layers";
 import AssignmentIcon from "@material-ui/icons/Assignment";
 
+let styles = {
+  color: "black",
+  textDecoration: "none"
+};
+
 export const mainListItems = (
   <div>
-    <Link to="/">
+    <Link to="/" style={styles}>
       <ListItem button>
         <ListItemIcon>
           <DashboardIcon />
@@ -21,7 +27,7 @@ export const mainListItems = (
         <ListItemText primary="Dashboard" />
       </ListItem>
     </Link>
-    <Link to="/exif">
+    <Link to="/exif" style={styles}>
       <ListItem button>
         <ListItemIcon>
           <ShoppingCartIcon />
@@ -74,3 +80,9 @@ export const secondaryListItems = (
 		</ListItem> */}
   </div>
 );
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    display: "flex"
+  }
+}));
